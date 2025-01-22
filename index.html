@@ -1,46 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Details</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display JSON Data</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    .myStyle {
+      background-color: coral;
+      padding: 16px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Book Details</h1>
-    <p id="first-book-title"></p>
-    <p id="second-book-author"></p>
-    <p id="all-genres"></p>
+  <h1>Book Details</h1>
+  <p id="book1-title"></p>
+  <p id="book2-author"></p>
+  <p id="all-genres"></p>
 
-    <script>
-        $(document).ready(function() {
-            // JSON data
-            const books = [
-                {
-                    title: "The Great Gatsby",
-                    author: "F. Scott Fitzgerald",
-                    publicationYear: 1925,
-                    genres: ["Fiction", "Classics"]
-                },
-                {
-                    title: "To Kill a Mockingbird",
-                    author: "Harper Lee",
-                    publicationYear: 1960,
-                    genres: ["Fiction", "Coming-of-Age"]
-                }
-            ];
+  <div id="myElement">Original Text</div>
+  <div id="myDIV">
+    <p>I am a myDIV.</p>
+  </div>
+  <button id="myButton">Click me</button>
 
-            // (a) Display the title of the first book
-            $("#first-book-title").text("Title: " + books[0].title);
+  <script>
+    $(document).ready(function() {
+      // JSON Data
+      const books = [
+        {
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "publicationYear": 1925,
+          "genres": ["Fiction", "Classics"]
+        },
+        {
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "publicationYear": 1960,
+          "genres": ["Fiction", "Coming-of-Age"]
+        }
+      ];
 
-            // (b) Display the author of the second book
-            $("#second-book-author").text("Author: " + books[1].author);
+      // Display the title of the first book
+      $("#book1-title").text("Title of the first book: " + books[0].title);
 
-            // (c) Display the genres of all books
-            const allGenres = books.map(book => book.genres).flat().join(", ");
-            $("#all-genres").text("Genres: " + allGenres);
-        });
-    </script>
+      // Display the author of the second book
+      $("#book2-author").text("Author of the second book: " + books[1].author);
+
+      // Display the genres of all books
+      const allGenres = books.map(book => book.genres).flat().join(", ");
+      $("#all-genres").text("Genres of all books: " + allGenres);
+
+      // a: Change text content of #myElement
+      $("#myElement").text("Modified Text");
+
+      // b: Add class to #myDIV
+      $("#myDIV").addClass("myStyle");
+
+      // c: Add a click event to #myButton
+      $("#myButton").click(function() {
+        alert("Button clicked!");
+      });
+    });
+  </script>
 </body>
 </html>
-
